@@ -5,7 +5,7 @@ import io.gatling.http.Predef._
 import io.gatling.http.request.builder.HttpRequestBuilder.toActionBuilder
 import scala.concurrent.duration._
 
-class HttpSimulation1 extends Simulation {
+class InteractiveSparkCommandSimulation extends Simulation {
   /* Place for arbitrary Scala code that is to be executed before the simulation begins. */
   before {
     println("***** My simulation is about to begin! *****")
@@ -29,10 +29,10 @@ class HttpSimulation1 extends Simulation {
    * One simulation can contain many scenarios.
    */
   /* Scenario1 is a name that describes the scenario. */
-  val theScenarioBuilder = scenario("Scenario1")
+  val theScenarioBuilder = scenario("Interactive Spark Command Scenario Using LIVY Rest Services")
     .exec(
       /* myRequest1 is a name that describes the request. */
-      http("myRequest1")
+      http("Interactive Spark Command Simulation")
         .get("")
     )
 
