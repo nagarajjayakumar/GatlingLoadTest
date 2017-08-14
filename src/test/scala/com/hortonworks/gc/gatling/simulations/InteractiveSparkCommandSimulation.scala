@@ -19,6 +19,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
 import com.hortonworks.gc.gatling.simulations.LivyRestClient.StatementResult
+import io.gatling.commons.validation.Success
+import io.gatling.core.feeder.RecordSeqFeederBuilder
+
+import scala.concurrent.forkjoin.ThreadLocalRandom
+
 
 class InteractiveSparkCommandSimulation extends Simulation {
   /* Place for arbitrary Scala code that is to be executed before the simulation begins. */
@@ -41,11 +46,11 @@ class InteractiveSparkCommandSimulation extends Simulation {
 
   val httpClient: AsyncHttpClient = new AsyncHttpClient(httpClientConfig)
 
-  val url = "http://127.0.0.1:8080"
+  val url = "http://gatling.field.hortonworks.com:9090"
 
   val numOfContainer = 3
 
-  var getAllIdleLivySessionIds :List [Int] = List (79,80,81)
+  var getAllIdleLivySessionIds :List [Int] = List (82,83,84,85)
   val rnd = new Random
 
   before {
@@ -123,6 +128,9 @@ class InteractiveSparkCommandSimulation extends Simulation {
    */
   val theHttpProtocolBuilder = http
     .baseURL(url)
+    .acceptHeader("application/xml, text/html, text/plain, application/json, */*")
+    .acceptCharsetHeader("UTF-8")
+    .acceptEncodingHeader("gzip, deflate")
 
 
   /*
@@ -132,20 +140,31 @@ class InteractiveSparkCommandSimulation extends Simulation {
    */
   /* Scenario1 is a name that describes the scenario. */
 
-  val randomElementFeeder =
-    Iterator.continually(Map("sessionId" -> getRandomElement(getAllIdleLivySessionIds, rnd)))
+  //val randomElementFeeder =
+  //  Iterator.continually(Map("sessionId" -> getRandomElement(getAllIdleLivySessionIds, rnd)))
 
   def getRandomElement(list: List[Int], random: Random): Int =
     list(random.nextInt(list.length))
 
+  val feedIds = (session: Session) => {
+    val sessionId = getRandomElement(getAllIdleLivySessionIds, rnd)
+
+    println("ids = " + sessionId)
+    new Success(session.set("sessionId", sessionId))
+  }
+
+
+  val feeder = csv("sessionIds.csv").circular
+
   val theScenarioBuilder =
-    scenario("Interactive Spark Command Scenario Using LIVY Rest Services")
-      .feed(randomElementFeeder)
+    scenario("Interactive Spark Command Scenario Using LIVY Rest Services $sessionId")
+      .feed(feeder)
       .exec(
         /* myRequest1 is a name that describes the request. */
         http("Interactive Spark Command Simulation")
-          .get("/insrun?sessionId=${sessionId}&statement=dataFrame.show(5)")
-      )
+          .get("/insrun?sessionId=${sessionId}&statement=dataFrame.show(5)").check()
+      ).pause(10 second)
+
 
 
   private def assertStatusCode(r: Response, expected: Int): Unit = {
@@ -163,6 +182,6 @@ class InteractiveSparkCommandSimulation extends Simulation {
    * We also specify the HTTP protocol builder to be used by the load simulation.
    */
   setUp(
-    theScenarioBuilder.inject(atOnceUsers(4))
+    theScenarioBuilder.inject(atOnceUsers(1))
   ).protocols(theHttpProtocolBuilder)
 }
