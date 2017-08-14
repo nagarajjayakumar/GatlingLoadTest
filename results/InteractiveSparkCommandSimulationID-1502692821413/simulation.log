@@ -1,0 +1,13 @@
+RUN	com.hortonworks.gc.gatling.simulations.InteractiveSparkCommandSimulation		InteractiveSparkCommandSimulationID	1502692821413	InteractiveSparkCommandSimulation	2.0
+USER	Interactive Spark Command Scenario Using LIVY Rest Services	1	START	1502692822976	1502692822976
+USER	Interactive Spark Command Scenario Using LIVY Rest Services	2	START	1502692822982	1502692822982
+USER	Interactive Spark Command Scenario Using LIVY Rest Services	3	START	1502692822982	1502692822982
+USER	Interactive Spark Command Scenario Using LIVY Rest Services	4	START	1502692822982	1502692822982
+REQUEST	Interactive Spark Command Scenario Using LIVY Rest Services	3		Interactive Spark Command Simulation	1502692823019	1502692823910	KO	status.find.in(200,304,201,202,203,204,205,206,207,208,209), but actually found 500
+USER	Interactive Spark Command Scenario Using LIVY Rest Services	3	END	1502692822982	1502692823940
+REQUEST	Interactive Spark Command Scenario Using LIVY Rest Services	2		Interactive Spark Command Simulation	1502692823017	1502692825366	OK	 
+USER	Interactive Spark Command Scenario Using LIVY Rest Services	2	END	1502692822982	1502692825368
+REQUEST	Interactive Spark Command Scenario Using LIVY Rest Services	4		Interactive Spark Command Simulation	1502692823021	1502692827720	OK	 
+USER	Interactive Spark Command Scenario Using LIVY Rest Services	4	END	1502692822982	1502692827722
+REQUEST	Interactive Spark Command Scenario Using LIVY Rest Services	1		Interactive Spark Command Simulation	1502692823010	1502692831682	OK	 
+USER	Interactive Spark Command Scenario Using LIVY Rest Services	1	END	1502692822976	1502692831685

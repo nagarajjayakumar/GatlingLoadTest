@@ -1,0 +1,13 @@
+RUN	com.hortonworks.gc.gatling.simulations.InteractiveSparkCommandSimulation		InteractiveSparkCommandSimulationID	1502692753294	InteractiveSparkCommandSimulation	2.0
+USER	Interactive Spark Command Scenario Using LIVY Rest Services	1	START	1502692754853	1502692754853
+USER	Interactive Spark Command Scenario Using LIVY Rest Services	2	START	1502692754860	1502692754860
+USER	Interactive Spark Command Scenario Using LIVY Rest Services	3	START	1502692754860	1502692754860
+USER	Interactive Spark Command Scenario Using LIVY Rest Services	4	START	1502692754860	1502692754860
+REQUEST	Interactive Spark Command Scenario Using LIVY Rest Services	2		Interactive Spark Command Simulation	1502692754886	1502692754886	KO	o.a.e.RemotelyClosedException: Remotely closed
+REQUEST	Interactive Spark Command Scenario Using LIVY Rest Services	4		Interactive Spark Command Simulation	1502692754890	1502692754890	KO	o.a.e.RemotelyClosedException: Remotely closed
+REQUEST	Interactive Spark Command Scenario Using LIVY Rest Services	3		Interactive Spark Command Simulation	1502692754888	1502692754888	KO	o.a.e.RemotelyClosedException: Remotely closed
+USER	Interactive Spark Command Scenario Using LIVY Rest Services	4	END	1502692754860	1502692757959
+USER	Interactive Spark Command Scenario Using LIVY Rest Services	3	END	1502692754860	1502692757959
+USER	Interactive Spark Command Scenario Using LIVY Rest Services	2	END	1502692754860	1502692757959
+REQUEST	Interactive Spark Command Scenario Using LIVY Rest Services	1		Interactive Spark Command Simulation	1502692754882	1502692758469	OK	 
+USER	Interactive Spark Command Scenario Using LIVY Rest Services	1	END	1502692754853	1502692758482

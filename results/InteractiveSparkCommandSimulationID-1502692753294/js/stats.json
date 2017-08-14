@@ -1,0 +1,161 @@
+{
+  "type": "GROUP",
+"name": "Global Information",
+"path": "",
+"pathFormatted": "group_missing-name-b06d1",
+"stats": {
+    "name": "Global Information",
+    "numberOfRequests": {
+        "total": 4,
+        "ok": 1,
+        "ko": 3
+    },
+    "minResponseTime": {
+        "total": 0,
+        "ok": 3587,
+        "ko": 0
+    },
+    "maxResponseTime": {
+        "total": 3587,
+        "ok": 3587,
+        "ko": 0
+    },
+    "meanResponseTime": {
+        "total": 897,
+        "ok": 3587,
+        "ko": 0
+    },
+    "standardDeviation": {
+        "total": 1553,
+        "ok": 0,
+        "ko": 0
+    },
+    "percentiles1": {
+        "total": 0,
+        "ok": 3587,
+        "ko": 0
+    },
+    "percentiles2": {
+        "total": 897,
+        "ok": 3587,
+        "ko": 0
+    },
+    "percentiles3": {
+        "total": 3049,
+        "ok": 3587,
+        "ko": 0
+    },
+    "percentiles4": {
+        "total": 3479,
+        "ok": 3587,
+        "ko": 0
+    },
+    "group1": {
+        "name": "t < 800 ms",
+        "count": 0,
+        "percentage": 0
+    },
+    "group2": {
+        "name": "800 ms < t < 1200 ms",
+        "count": 0,
+        "percentage": 0
+    },
+    "group3": {
+        "name": "t > 1200 ms",
+        "count": 1,
+        "percentage": 25
+    },
+    "group4": {
+        "name": "failed",
+        "count": 3,
+        "percentage": 75
+    },
+    "meanNumberOfRequestsPerSecond": {
+        "total": 1.0,
+        "ok": 0.25,
+        "ko": 0.75
+    }
+},
+"contents": {
+"req_interactive-spa-c2fc7": {
+        "type": "REQUEST",
+        "name": "Interactive Spark Command Simulation",
+"path": "Interactive Spark Command Simulation",
+"pathFormatted": "req_interactive-spa-c2fc7",
+"stats": {
+    "name": "Interactive Spark Command Simulation",
+    "numberOfRequests": {
+        "total": 4,
+        "ok": 1,
+        "ko": 3
+    },
+    "minResponseTime": {
+        "total": 0,
+        "ok": 3587,
+        "ko": 0
+    },
+    "maxResponseTime": {
+        "total": 3587,
+        "ok": 3587,
+        "ko": 0
+    },
+    "meanResponseTime": {
+        "total": 897,
+        "ok": 3587,
+        "ko": 0
+    },
+    "standardDeviation": {
+        "total": 1553,
+        "ok": 0,
+        "ko": 0
+    },
+    "percentiles1": {
+        "total": 0,
+        "ok": 3587,
+        "ko": 0
+    },
+    "percentiles2": {
+        "total": 897,
+        "ok": 3587,
+        "ko": 0
+    },
+    "percentiles3": {
+        "total": 3049,
+        "ok": 3587,
+        "ko": 0
+    },
+    "percentiles4": {
+        "total": 3479,
+        "ok": 3587,
+        "ko": 0
+    },
+    "group1": {
+        "name": "t < 800 ms",
+        "count": 0,
+        "percentage": 0
+    },
+    "group2": {
+        "name": "800 ms < t < 1200 ms",
+        "count": 0,
+        "percentage": 0
+    },
+    "group3": {
+        "name": "t > 1200 ms",
+        "count": 1,
+        "percentage": 25
+    },
+    "group4": {
+        "name": "failed",
+        "count": 3,
+        "percentage": 75
+    },
+    "meanNumberOfRequestsPerSecond": {
+        "total": 1.0,
+        "ok": 0.25,
+        "ko": 0.75
+    }
+}
+    }
+}
+
+}
