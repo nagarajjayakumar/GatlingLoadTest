@@ -163,7 +163,7 @@ class InteractiveSparkCommandSimulation extends Simulation {
         /* myRequest1 is a name that describes the request. */
         http("Interactive Spark Command Simulation")
           .get("/insrun?sessionId=${sessionId}&statement=dataFrame.show(5)").check()
-      ).pause(10 second)
+      ).pause(5 second)
 
 
 
@@ -182,6 +182,6 @@ class InteractiveSparkCommandSimulation extends Simulation {
    * We also specify the HTTP protocol builder to be used by the load simulation.
    */
   setUp(
-    theScenarioBuilder.inject(atOnceUsers(1))
+    theScenarioBuilder.inject(atOnceUsers(12))
   ).protocols(theHttpProtocolBuilder)
 }
