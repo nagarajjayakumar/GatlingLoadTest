@@ -163,7 +163,7 @@ class InteractiveSparkCommandSimulation extends Simulation {
         /* myRequest1 is a name that describes the request. */
         http("Interactive Spark Command Simulation")
           .get("/insrun?sessionId=${sessionId}&statement=dataFrame.show(5)").check()
-      )
+      ).pause(4 second)
 
 
 
