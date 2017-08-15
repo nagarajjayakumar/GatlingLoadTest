@@ -10,3 +10,5 @@ or simply:
 
     $mvn gatling:execute
 # GatlingLoadTest
+
+![alt text](https://github.com/nagarajjayakumar/GatlingLoadTest/blob/master/LoadTest.png)
