@@ -183,6 +183,6 @@ class InteractiveSparkCommandSimulation extends Simulation {
    * We also specify the HTTP protocol builder to be used by the load simulation.
    */
   setUp(
-    theScenarioBuilder.inject(atOnceUsers(12))
+    theScenarioBuilder.inject(atOnceUsers(30))
   ).protocols(theHttpProtocolBuilder)
 }
