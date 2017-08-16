@@ -155,15 +155,17 @@ class InteractiveSparkCommandSimulation extends Simulation {
 
 
   val feeder = csv("sessionIds.csv").circular
+  val bboxfeeder = csv("bbox.csv").circular
 
   val theScenarioBuilder =
     scenario("Interactive Spark Command Scenario Using LIVY Rest Services $sessionId")
       .feed(feeder)
+        .feed(bboxfeeder)
       .exec(
         /* myRequest1 is a name that describes the request. */
         http("Interactive Spark Command Simulation")
           //.get("/insrun?sessionId=${sessionId}&statement=dataFrame.show(5)").check()
-            .get("/insrun?sessionId=${sessionId}&statement=sparkSession.sql(%22%20select%20event.site_id%20from%20event%20%20where%20st_intersects(st_makeBBOX(-91.0%2C%2031.0%2C%20-96.0%2C%2029.0)%2C%20geom)%20limit%205%20%22).show").check()
+            .get("/insrun?sessionId=${sessionId}&statement=sparkSession.sql(%22%20select%20event.site_id%20from%20event%20%20where%20st_intersects(st_makeBBOX(${bbox})%2C%20geom)%20limit%205%20%22).show").check()
       ).pause(4 second)
 
 
