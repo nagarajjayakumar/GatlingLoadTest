@@ -46,7 +46,7 @@ class InteractiveSparkCommandSimulation extends Simulation {
 
   val httpClient: AsyncHttpClient = new AsyncHttpClient(httpClientConfig)
 
-  val url = "http://gatling.field.hortonworks.com:9090"
+  val url = "http://usdf23v0386.mrshmc.com:9090"
 
   val numOfContainer = 3
 
@@ -164,9 +164,8 @@ class InteractiveSparkCommandSimulation extends Simulation {
       .exec(
         /* myRequest1 is a name that describes the request. */
         http("Interactive Spark Command Simulation")
-          //.get("/insrun?sessionId=${sessionId}&statement=dataFrame.show(5)").check()
-            .get("/insrun?sessionId=${sessionId}&statement=sparkSession.sql(%22%20select%20event.site_id%20from%20event%20%20where%20st_intersects(st_makeBBOX(${bbox})%2C%20geom)%20limit%205%20%22).show").check()
-      ).pause(4 second)
+.get("/insrun?sessionId=${sessionId}&statement=sparkSession.sql(%22%20select%20event.site_id%20from%20siteexposure_event%20as%20event%20where%20st_intersects(st_makeBBOX(${bbox})%2C%20geom)%20limit%205%20%22).show").check()      
+).pause(4 second)
 
 
 
@@ -185,6 +184,6 @@ class InteractiveSparkCommandSimulation extends Simulation {
    * We also specify the HTTP protocol builder to be used by the load simulation.
    */
   setUp(
-    theScenarioBuilder.inject(atOnceUsers(30))
+    theScenarioBuilder.inject(atOnceUsers(20))
   ).protocols(theHttpProtocolBuilder)
 }
