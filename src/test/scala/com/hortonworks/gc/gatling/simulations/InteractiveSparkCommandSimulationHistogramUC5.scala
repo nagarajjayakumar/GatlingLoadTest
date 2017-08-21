@@ -156,7 +156,7 @@ class InteractiveSparkCommandSimulationHistogramUC5 extends Simulation {
         /* myRequest1 is a name that describes the request. */
         http("Interactive Spark Command Simulation")
           //.get("/insrun?sessionId=${sessionId}&statement=dataFrame.show(5)").check()
-            .get("/insrun?sessionId=${sessionId}&statement=sparkSession.sql(SELECT%20MIN(max_10)%20AS%20MIN_VAL%2C%20MAX(max_10)%20AS%20MAX_VAL%2C%20BIN%2C%20COUNT(1)%20%20AS%20FREQUENCY%20FROM%20myview1%20where%20portfolio_id%3D${portfolioId}%20GROUP%20BY%20BIN%20ORDER%20BY%20BIN%20limit%20100%20).show").check()
+            .get("/insrun?sessionId=${sessionId}&statement=%22sparkSession.sql(SELECT%20MIN(max_10)%20AS%20MIN_VAL%2C%20MAX(max_10)%20AS%20MAX_VAL%2C%20BIN%2C%20COUNT(1)%20%20AS%20FREQUENCY%20FROM%20myview1%20where%20portfolio_id%3D${portfolioId}%20GROUP%20BY%20BIN%20ORDER%20BY%20BIN%20limit%20100%20%22).show").check()
       ).pause(4 second)
 
 
