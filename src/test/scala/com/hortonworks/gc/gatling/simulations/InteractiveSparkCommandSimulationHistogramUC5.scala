@@ -146,7 +146,7 @@ class InteractiveSparkCommandSimulationHistogramUC5 extends Simulation {
 
 
   val feeder = csv("sessionIds.csv").circular
-  val portfolioFeeder = csv("bbox.csv").random
+  val portfolioFeeder = csv("portfolioIds.csv").random
 
   val theScenarioBuilder =
     scenario("Interactive Spark Command Scenario Using LIVY Rest Services $sessionId")
