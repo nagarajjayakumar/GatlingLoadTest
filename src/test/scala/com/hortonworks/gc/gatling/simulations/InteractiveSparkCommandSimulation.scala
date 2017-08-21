@@ -46,7 +46,9 @@ class InteractiveSparkCommandSimulation extends Simulation {
 
   val httpClient: AsyncHttpClient = new AsyncHttpClient(httpClientConfig)
 
-  val url = "http://usdf23v0386.mrshmc.com:9090"
+  //val url = "http://usdf23v0386.mrshmc.com:9090"
+
+  val url = "http://gatling.field.hortonworks.com:9090"
 
   val numOfContainer = 3
 
@@ -184,10 +186,6 @@ class InteractiveSparkCommandSimulation extends Simulation {
    * We also specify the HTTP protocol builder to be used by the load simulation.
    */
   setUp(
-<<<<<<< HEAD
     theScenarioBuilder.inject(atOnceUsers(10))
-=======
-    theScenarioBuilder.inject(atOnceUsers(20))
->>>>>>> 7aab6bc63bf981189e41d5521778432f4552e271
   ).protocols(theHttpProtocolBuilder)
 }
