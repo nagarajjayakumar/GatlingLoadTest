@@ -1,31 +1,21 @@
 package com.hortonworks.gc.gatling.simulations
 
-import java.util.concurrent.{Executors, TimeUnit}
-import javax.servlet.http.HttpServletResponse
+import java.util.concurrent.Executors
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.scala.DefaultScalaModule
 import com.ning.http.client.{AsyncHttpClient, AsyncHttpClientConfig, Response}
+import io.gatling.commons.validation.Success
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import io.gatling.http.request.builder.HttpRequestBuilder.toActionBuilder
 
 import scala.concurrent.duration._
-import scala.collection.JavaConverters._
-import scala.concurrent.duration._
 import scala.language.postfixOps
-import scala.util.{Either, Left, Random, Right}
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.module.scala.DefaultScalaModule
-import com.hortonworks.gc.gatling.simulations.LivyRestClient.StatementResult
-import io.gatling.commons.validation.Success
-import io.gatling.core.feeder.RecordSeqFeederBuilder
-
-import scala.concurrent.forkjoin.ThreadLocalRandom
+import scala.util.Random
 
 
-class InteractiveSparkCommandSimulation extends Simulation {
+class InteractiveSparkCommandSimulationHistogramUC5 extends Simulation {
   /* Place for arbitrary Scala code that is to be executed before the simulation begins. */
 
   val mapper = new ObjectMapper()
@@ -155,17 +145,17 @@ class InteractiveSparkCommandSimulation extends Simulation {
 
 
   val feeder = csv("sessionIds.csv").circular
-  val bboxfeeder = csv("bbox.csv").random
+  val portfolioFeeder = csv("bbox.csv").random
 
   val theScenarioBuilder =
     scenario("Interactive Spark Command Scenario Using LIVY Rest Services $sessionId")
       .feed(feeder)
-        .feed(bboxfeeder)
+        .feed(portfolioFeeder)
       .exec(
         /* myRequest1 is a name that describes the request. */
         http("Interactive Spark Command Simulation")
           //.get("/insrun?sessionId=${sessionId}&statement=dataFrame.show(5)").check()
-            .get("/insrun?sessionId=${sessionId}&statement=sparkSession.sql(%22%20select%20event.site_id%20from%20event%20%20where%20st_intersects(st_makeBBOX(${bbox})%2C%20geom)%20limit%205%20%22).show").check()
+            .get("/insrun?sessionId=${sessionId}&statement=sparkSession.sql(SELECT%20MIN(max_10)%20AS%20MIN_VAL%2C%20MAX(max_10)%20AS%20MAX_VAL%2C%20BIN%2C%20COUNT(1)%20%20AS%20FREQUENCY%20FROM%20myview1%20where%20portfolio_id%3D${portfolioId}%20GROUP%20BY%20BIN%20ORDER%20BY%20BIN%20limit%20100%20).show").check()
       ).pause(4 second)
 
 
