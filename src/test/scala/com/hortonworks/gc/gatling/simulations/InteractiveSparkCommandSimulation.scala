@@ -46,9 +46,9 @@ class InteractiveSparkCommandSimulation extends Simulation {
 
   val httpClient: AsyncHttpClient = new AsyncHttpClient(httpClientConfig)
 
-  //val url = "http://usdf23v0386.mrshmc.com:9090"
+  val url = "http://usdf23v0386.mrshmc.com:9090"
 
-  val url = "http://gatling.field.hortonworks.com:9090"
+  //val url = "http://gatling.field.hortonworks.com:9090"
 
   val numOfContainer = 3
 
